@@ -19,7 +19,7 @@
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="309dp"
         android:autoSizeTextType="none"
-        android:text="Welcome To Sasken Record Digitaization"
+        android:text="@string/welcome_to_sasken_record_digitaization"
         android:textColor="@color/design_default_color_primary_variant"
         android:textColorHighlight="#E91E63"
         android:textSize="30dp"
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/adminbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -38,7 +38,7 @@
         android:layout_marginTop="447dp"
         android:layout_marginEnd="88dp"
         android:layout_marginBottom="236dp"
-        android:text="Admin"
+        android:text="@string/admin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.622" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/usersbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -58,7 +58,7 @@
         android:layout_marginTop="446dp"
         android:layout_marginEnd="215dp"
         android:layout_marginBottom="237dp"
-        android:text="Users"
+        android:text="@string/users"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.782"
