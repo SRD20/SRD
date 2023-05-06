@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
 	 DBHelper dbHelper = new DBHelper(this);
 
         // Inserting Contact
-        dbHelper.addEmployee(new EmployeeModel("qqq", "weee", "dfeses", "dfggf","wwee"));
-        //dbHelper.addEmployee(new EmployeeModel("qqq12", "weee", "dfeses", "dfggf","wwee"));
-       // dbHelper.addEmployee(new EmployeeModel("qqq1234", "weee", "dfeses", "dfggf","wwee"));
+        dbHelper.addEmployee(new EmployeeModel("qqq2w", "weee", "dfeses", "dfggf","wwee"));
+        dbHelper.addEmployee(new EmployeeModel("qqq12", "weee", "dfeses", "dfggf","wwee"));
+        dbHelper.addEmployee(new EmployeeModel("qqq1234", "weee", "dfeses", "dfggf","wwee"));
 
         adminbutton.setOnClickListener(new View.OnClickListener() {
             @Override
