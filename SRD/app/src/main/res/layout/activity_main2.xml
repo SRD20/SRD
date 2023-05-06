@@ -81,7 +81,7 @@
         android:textSize="25dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -96,7 +96,7 @@
         android:text="login" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/login_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
