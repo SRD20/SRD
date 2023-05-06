@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,10 +32,18 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+	//Database creation
+    DBHelper dbHelper = new DBHelper(this);
+
+    // Inserting Contact
+    dbHelper.addEmployee(new EmployeeModel("qqq", "weee", "dfeses", "dfggf","wwee"));
+    //dbHelper.addEmployee(new EmployeeModel("qqq12", "weee", "dfeses", "dfggf","wwee"));
+    // dbHelper.addEmployee(new EmployeeModel("qqq1234", "weee", "dfeses", "dfggf","wwee"));
+
     }
     public void openActivity2(){
         Intent intent=new Intent(this, MainActivity2.class);
                     startActivity(intent);
     }
-
 }
