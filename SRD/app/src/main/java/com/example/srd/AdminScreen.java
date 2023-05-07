@@ -1,24 +1,14 @@
 package com.example.srd;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public class MainActivity3 extends AppCompatActivity {
+public class AdminScreen extends AppCompatActivity {
     private Button add_users;
     private Button del_users;
     private Button view_users;
@@ -63,9 +53,13 @@ public class MainActivity3 extends AppCompatActivity {
     }
 
     private void showDeleteUsersDialog() {
-        DeleteUsersFragment deleteUsersFragment = new DeleteUsersFragment();
-        deleteUsersFragment.setCancelable(true);
-        deleteUsersFragment.show(getSupportFragmentManager(),"DeleteUsers");
+        if(DBHelper.getDBInstance(this.getApplicationContext()).getRowCount() == 0){
+            Toast.makeText(getApplicationContext(),"No Users found",Toast.LENGTH_LONG).show();
+        }else{
+            DeleteUsersFragment deleteUsersFragment = new DeleteUsersFragment();
+            deleteUsersFragment.setCancelable(true);
+            deleteUsersFragment.show(getSupportFragmentManager(),"DeleteUsers");
+        }
     }
 
     private void showAddUsersDialog() {

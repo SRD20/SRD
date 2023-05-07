@@ -12,15 +12,18 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
      private Button adminbutton;
      private Button usersbutton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DBHelper dbHelper = DBHelper.getDBInstance(this.getApplicationContext());
         adminbutton = (Button) findViewById(R.id.adminbtn);
         adminbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivity2();
+                return;
             }
 
         });
@@ -29,17 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openActivity2();
+                return;
             }
-
         });
-
-	//Database creation
-    DBHelper dbHelper = new DBHelper(this);
-
-    // Inserting Contact
-    dbHelper.addEmployee(new EmployeeModel("qqq", "weee", "dfeses", "dfggf","wwee"));
-    //dbHelper.addEmployee(new EmployeeModel("qqq12", "weee", "dfeses", "dfggf","wwee"));
-    // dbHelper.addEmployee(new EmployeeModel("qqq1234", "weee", "dfeses", "dfggf","wwee"));
 
     }
     public void openActivity2(){

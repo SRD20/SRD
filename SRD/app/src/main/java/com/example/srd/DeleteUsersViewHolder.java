@@ -13,6 +13,5 @@ public class DeleteUsersViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         emp_id = itemView.findViewById(R.id.delcard_eid);
         emp_name = itemView.findViewById(R.id.delcard_ename);
-
     }
 }

@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void openActivity3() {
-        Intent intent=new Intent(this, MainActivity3.class);
+        Intent intent=new Intent(this, AdminScreen.class);
         startActivity(intent);
     }
 }

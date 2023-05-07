@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:id="@+id/delcard_eid"
         android:layout_marginStart="20dp"
-        android:text="Employee-ID"
         android:textColor="@color/black"
         android:layout_marginEnd="20dp"
         android:maxLines="1"
@@ -30,7 +29,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Employee-Name"
         android:maxLines="1"
         android:layout_weight="0.7"
         android:textColor="@color/black"/>

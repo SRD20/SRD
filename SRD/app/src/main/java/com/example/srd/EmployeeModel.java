@@ -9,6 +9,12 @@ public class EmployeeModel
     String typeOfData;
 
 
+    public EmployeeModel(String empId,String name,String phoneNumber,String password){
+        this.empId=empId;
+        this.name=name;
+        this.phoneNumber=phoneNumber;
+        this.password=password;
+    }
     public EmployeeModel(String empId,String name,String phoneNumber,String password,String typeOfData){
         this.empId=empId;
         this.name=name;
