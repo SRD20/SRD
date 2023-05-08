@@ -8,30 +8,46 @@
     android:layout_margin="5dp"
     android:background="@drawable/layout_bg">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/delcard_eid"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:textColor="@color/black"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="10dp"
         android:maxLines="1"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_weight="0.3"
+        android:layout_weight="0.2"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/delcard_ename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:maxLines="1"
-        android:layout_weight="0.7"
+        android:layout_weight="0.5"
         android:textColor="@color/black"/>
 
+    <ImageButton
+        android:id="@+id/edit_btn"
+        android:src="@drawable/ic_edit_img"
+        android:padding="3dp"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"/>
+
+    <ImageButton
+        android:id="@+id/delete_btn"
+        android:src="@drawable/ic_delete_img"
+        android:padding="3dp"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"/>
 
 </LinearLayout>

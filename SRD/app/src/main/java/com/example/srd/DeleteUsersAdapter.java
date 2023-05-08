@@ -8,15 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DeleteUsersAdapter extends RecyclerView.Adapter<DeleteUsersViewHolder> {
     Context context;
     Cursor csr;
     DBHelper dbHelper;
-
-    public DeleteUsersAdapter(Context c){
+    FragmentManager frag;
+    public DeleteUsersAdapter(Context c,FragmentManager f){
         this.context = c;
+        frag = f;
         dbHelper = DBHelper.getDBInstance(c);
     }
     @NonNull
@@ -27,7 +29,7 @@ public class DeleteUsersAdapter extends RecyclerView.Adapter<DeleteUsersViewHold
         Log.d("SRD_test","oncreateviewholder called");
         if(csr==null)
             csr = dbHelper.getCursor();
-        return new DeleteUsersViewHolder(view);
+        return new DeleteUsersViewHolder(view,context,frag);
     }
 
     @Override
