@@ -26,7 +26,7 @@ public class DeleteUsersFragment extends DialogFragment {
         RecyclerView rv = delete_diag.findViewById(R.id.delete_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(linearLayoutManager);
-        DeleteUsersAdapter deleteUsersAdapter = new DeleteUsersAdapter(getActivity().getApplicationContext(),getActivity().getSupportFragmentManager());
+        DeleteUsersAdapter deleteUsersAdapter = new DeleteUsersAdapter(getActivity(),getActivity().getSupportFragmentManager());
         rv.setAdapter(deleteUsersAdapter);
         return delete_diag;
     }
