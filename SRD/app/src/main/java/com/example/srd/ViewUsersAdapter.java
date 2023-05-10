@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DeleteUsersAdapter extends RecyclerView.Adapter<DeleteUsersViewHolder> {
+public class ViewUsersAdapter extends RecyclerView.Adapter<ViewUsersViewHolder> {
     Context context;
     Cursor csr;
     DBHelper dbHelper;
     FragmentManager frag;
     EditUserDialogFragment.UpdateCallback callback;
-    public DeleteUsersAdapter(Context c,FragmentManager f){
+    public ViewUsersAdapter(Context c, FragmentManager f){
         this.context = c;
         frag = f;
         dbHelper = DBHelper.getDBInstance(c);
@@ -28,15 +28,15 @@ public class DeleteUsersAdapter extends RecyclerView.Adapter<DeleteUsersViewHold
     }
     @NonNull
     @Override
-    public DeleteUsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewUsersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //context = parent.getContext();
         View view  = LayoutInflater.from(context).inflate(R.layout.delete_users_card_layout,parent,false);
         Log.d("SRD_test","oncreateviewholder called");
-        return new DeleteUsersViewHolder(view);
+        return new ViewUsersViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DeleteUsersViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewUsersViewHolder holder, int position) {
         if(!csr.moveToPosition(position)) return;
         Log.d("SRD_test","in onbindviewer :"+csr.getString(0)+","+csr.getString(1));
         holder.emp_id.setText(csr.getString(0));
@@ -71,7 +71,7 @@ public class DeleteUsersAdapter extends RecyclerView.Adapter<DeleteUsersViewHold
         return (int)dbHelper.getRowCount();
     }
 
-    private void showDeleteUserDialog(DeleteUsersViewHolder holder) {
+    private void showDeleteUserDialog(ViewUsersViewHolder holder) {
         //alertdialog is enough. upon confirmation fire delete query.
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context)
                 .setTitle("Delete confirmation")
@@ -101,6 +101,5 @@ public class DeleteUsersAdapter extends RecyclerView.Adapter<DeleteUsersViewHold
         });
         AlertDialog alert = alertDialog.create();
         alert.show();
-
     }
 }

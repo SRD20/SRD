@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +12,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DeleteUsersFragment extends DialogFragment {
+public class ViewUsersFragment extends DialogFragment {
     View delete_diag;
     Cursor usersCursor;
     @Nullable
@@ -26,8 +25,8 @@ public class DeleteUsersFragment extends DialogFragment {
         RecyclerView rv = delete_diag.findViewById(R.id.delete_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(linearLayoutManager);
-        DeleteUsersAdapter deleteUsersAdapter = new DeleteUsersAdapter(getActivity(),getActivity().getSupportFragmentManager());
-        rv.setAdapter(deleteUsersAdapter);
+        ViewUsersAdapter viewUsersAdapter = new ViewUsersAdapter(getActivity(),getActivity().getSupportFragmentManager());
+        rv.setAdapter(viewUsersAdapter);
         return delete_diag;
     }
     @Override

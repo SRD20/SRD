@@ -5,22 +5,19 @@
 
 
     <TextView
-        android:id="@+id/textview"
-        android:layout_width="110dp"
+        android:id="@+id/login_textview"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="575dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginBottom="585dp"
+        android:layout_marginLeft="90dp"
         android:text="Login"
         android:textSize="38dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/username_editText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
@@ -42,11 +39,11 @@
         android:textColorHint="#ffff25e6" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_editText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/username_editText"
+        android:layout_alignRight="@+id/username_editText"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"

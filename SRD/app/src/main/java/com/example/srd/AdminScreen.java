@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class AdminScreen extends AppCompatActivity {
     private Button add_users;
-    private Button del_users;
+    private Button view_data;
     private Button view_users;
     private Button view_compln;
     private EditText emp_id,username,passwd;
@@ -19,10 +19,10 @@ public class AdminScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         add_users = (Button) findViewById(R.id.add_user_btn);
-        del_users = (Button) findViewById(R.id.delete_user_btn);
-        view_users = (Button) findViewById(R.id.view_data_btn);
+        view_users = (Button) findViewById(R.id.view_users_btn);
         view_compln = (Button) findViewById(R.id.view_comp_btn);
-        //Dialog dialog = new Dialog(MainActivity3.this);
+        view_data = (Button) findViewById(R.id.view_data_btn);
+
         add_users.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,14 +30,14 @@ public class AdminScreen extends AppCompatActivity {
             }
         });
 
-        del_users.setOnClickListener(new View.OnClickListener() {
+        view_users.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDeleteUsersDialog();
+                showViewUsersDialog();
             }
         });
 
-        view_users.setOnClickListener(new View.OnClickListener() {
+        view_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -52,13 +52,13 @@ public class AdminScreen extends AppCompatActivity {
         });
     }
 
-    private void showDeleteUsersDialog() {
+    private void showViewUsersDialog() {
         if(DBHelper.getDBInstance(this.getApplicationContext()).getRowCount() == 0){
             Toast.makeText(getApplicationContext(),"No Users found",Toast.LENGTH_LONG).show();
         }else{
-            DeleteUsersFragment deleteUsersFragment = new DeleteUsersFragment();
-            deleteUsersFragment.setCancelable(true);
-            deleteUsersFragment.show(getSupportFragmentManager(),"DeleteUsers");
+            ViewUsersFragment viewUsersFragment = new ViewUsersFragment();
+            viewUsersFragment.setCancelable(true);
+            viewUsersFragment.show(getSupportFragmentManager(),"ViewUsers");
         }
     }
 

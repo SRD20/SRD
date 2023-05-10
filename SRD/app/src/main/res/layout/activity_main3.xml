@@ -4,73 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3">
+    tools:context=".AdminScreen">
 
-    <FrameLayout
+    <!--<FrameLayout
+        android:id="@+id/fragcontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragcontainer"
-        android:layout_margin="20dp"
-        />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp" />-->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="202dp"
-        android:layout_height="44dp"
+
+    <Button
+        android:id="@+id/view_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="208dp"
-        android:layout_marginBottom="497dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="335dp"
+        android:text="@string/view_the_data" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="590dp"
         android:text="@string/welcome_admin_please_select_ur_option" />
 
     <Button
         android:id="@+id/view_comp_btn"
-        android:layout_width="247dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="327dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="253dp"
         android:text="@string/view_complains" />
 
     <Button
-        android:id="@+id/view_data_btn"
-        android:layout_width="253dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="369dp"
-
-        android:text="@string/view_data" />
-
-    <Button
-        android:id="@+id/delete_user_btn"
-        android:layout_width="245dp"
+        android:id="@+id/view_users_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="410dp"
-        android:text="@string/delete_user" />
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="413dp"
+        android:text="@string/view_data" />
 
     <Button
         android:id="@+id/add_user_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="449dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="193dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="493dp"
         android:text="@string/add_user" />
 
 </RelativeLayout>

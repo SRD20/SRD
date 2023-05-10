@@ -13,10 +13,10 @@
     <string name="admin">Admin</string>
     <string name="users">Users</string>
     <string name="welcome_admin_please_select_ur_option">WELCOME ADMIN PLEASE SELECT UR OPTION:</string>
-    <string name="view_complains">view complains</string>
-    <string name="view_data">view data</string>
-    <string name="delete_user">Delete user</string>
+    <string name="view_complains">View complaints</string>
+    <string name="view_data">View all users</string>
     <string name="add_user">Add user</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="view_the_data">View the data</string>
 </resources>
