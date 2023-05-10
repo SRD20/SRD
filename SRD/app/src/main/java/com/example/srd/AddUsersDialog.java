@@ -46,7 +46,7 @@ public class AddUsersDialog extends DialogFragment {
                     if(dbHelper.addEmployee(employee))
                         Toast.makeText(getActivity().getApplicationContext(), "User Saved", Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(getActivity().getApplicationContext(), "User couldnt be Saved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "User couldn't be Saved", Toast.LENGTH_SHORT).show();
                     dismiss();
                 }
             }

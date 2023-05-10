@@ -84,7 +84,7 @@ public class DBHelper extends SQLiteOpenHelper {
             EmployeeModel emp = new EmployeeModel(csr.getString(0), csr.getString(1), null, null);
             list.add(emp);
         }
-        db.close();
+        //db.close();
         return list;
     }
 
@@ -97,8 +97,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public long getRowCount(){
         SQLiteDatabase db = this.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME);
-        db.close();
+        //db.close();
         return count;
     }
 
+    public void updateUser(String empid,String name,String phno){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(EMP_NAME,name);
+        cv.put(EMP_PHONE_NUMBER,phno);
+        db.update(TABLE_NAME,cv,EMP_ID+" =? ",new String[]{empid});
+    }
+
+    public int deleteUser(String empid){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int res = db.delete(TABLE_NAME,EMP_ID+" = '"+empid+"'",null);
+        //db.close();
+        return res;
+    }
 }

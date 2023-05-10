@@ -11,14 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+
 public class EditUserDialogFragment extends DialogFragment {
     View mView;
     EditText name,ph_no;
     Button update, cancel_upd;
-    String uname,phno;
-    public EditUserDialogFragment(String name,String phno){
+    String uname,phno,eid;
+    UpdateCallback upcb;
+
+    public EditUserDialogFragment(String eid,String name,String phno,UpdateCallback upcb){
+        this.eid = eid;
         uname = name;
         this.phno = phno;
+        this.upcb = upcb;
     }
     public EditUserDialogFragment(){
         super();
@@ -36,14 +41,21 @@ public class EditUserDialogFragment extends DialogFragment {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String updatedname = name.getText().toString();
+                String updatedphno = ph_no.getText().toString();
+                if(!uname.equals(updatedname) && !phno.equals(updatedphno)) {
+                    DBHelper dbhelper = DBHelper.getDBInstance(getActivity().getApplicationContext());
+                    dbhelper.updateUser(eid,updatedname,updatedphno);
+                    upcb.updateRecyclerView();
+                    dismiss();
+                }
             }
         });
 
         cancel_upd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                dismiss();
             }
         });
         return mView;
@@ -56,5 +68,9 @@ public class EditUserDialogFragment extends DialogFragment {
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+    }
+
+    public interface UpdateCallback{
+        void updateRecyclerView();
     }
 }
