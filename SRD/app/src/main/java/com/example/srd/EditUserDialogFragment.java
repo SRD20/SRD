@@ -25,9 +25,6 @@ public class EditUserDialogFragment extends DialogFragment {
         this.phno = phno;
         this.upcb = upcb;
     }
-    public EditUserDialogFragment(){
-        super();
-    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

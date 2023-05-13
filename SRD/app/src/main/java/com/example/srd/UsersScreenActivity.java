@@ -1,14 +1,22 @@
 package com.example.srd;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class UsersScreenActivity extends AppCompatActivity {
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
+
+public class UsersScreenActivity extends AppCompatActivity {
+    LabDataModel lbdata;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +26,9 @@ public class UsersScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(UsersScreenActivity.this, "Lab", Toast.LENGTH_SHORT).show();
+                // show the qr scanner
+                lbdata = new LabDataModel();
+                scanCode();
             }
         });
 
@@ -62,4 +73,34 @@ public class UsersScreenActivity extends AppCompatActivity {
         });
 
     }
+    ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(),result -> {
+        //Once lab qr code is available, put all these lines under if block.
+        if(result.getContents()!=null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(UsersScreenActivity.this);
+            builder.setTitle("Scan successful");
+            lbdata.setLabId(result.getContents());
+            builder.setMessage("You're entering data for " + result.getContents());
+            builder.setCancelable(false);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                    LabScreenFragment labScreenFragment = new LabScreenFragment(getApplicationContext(), lbdata);
+                    labScreenFragment.setCancelable(false);
+                    labScreenFragment.show(getSupportFragmentManager(), "LabScreen");
+                }
+            }).show();
+        }
+    });
+
+    private void scanCode()
+    {
+        ScanOptions options = new ScanOptions();
+        options.setPrompt("Volume up to turn flash on");
+        options.setBeepEnabled(true);
+        options.setOrientationLocked(true);
+        options.setCaptureActivity(QRScanner.class);
+        barLauncher.launch(options);
+    }
+
 }
