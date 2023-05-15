@@ -43,6 +43,7 @@ public class AddUsersDialog extends DialogFragment {
                     EmployeeModel employee = new EmployeeModel(emp_id.getText().toString(),emp_name.getText().toString(),
                             emp_pwd.getText().toString(),emp_phno.getText().toString());
                     Log.d("SRD_test",employee.empId+","+employee.getName());
+                    addUserToRTDB(employee);
                     if(dbHelper.addEmployee(employee))
                         Toast.makeText(getActivity().getApplicationContext(), "User Saved", Toast.LENGTH_SHORT).show();
                     else
@@ -63,8 +64,13 @@ public class AddUsersDialog extends DialogFragment {
     }
 
 
-    private void addUserToDB(EmployeeModel employeeModel) {
-
+    private void addUserToRTDB(EmployeeModel employeeModel) {
+        DAOEmployee daoEmployee = new DAOEmployee();
+        daoEmployee.addEmployee(employeeModel).addOnSuccessListener(success ->{
+            //Toast.makeText(getActivity().getApplicationContext(), "User Saved in RTDB", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(fail -> {
+            //Toast.makeText(getActivity().getApplicationContext(), "Failed to save in RTDB "+ fail.getMessage(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override

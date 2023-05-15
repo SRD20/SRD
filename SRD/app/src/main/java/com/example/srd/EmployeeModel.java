@@ -8,8 +8,9 @@ public class EmployeeModel
     String password;
     String typeOfData;
 
+    public EmployeeModel(){}
 
-    public EmployeeModel(String empId,String name,String phoneNumber,String password){
+    public EmployeeModel(String empId,String name,String password,String phoneNumber){
         this.empId=empId;
         this.name=name;
         this.phoneNumber=phoneNumber;

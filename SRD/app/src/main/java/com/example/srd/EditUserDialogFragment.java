@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import java.util.HashMap;
+
 
 public class EditUserDialogFragment extends DialogFragment {
     View mView;
@@ -43,9 +45,11 @@ public class EditUserDialogFragment extends DialogFragment {
                 if(!uname.equals(updatedname) && !phno.equals(updatedphno)) {
                     DBHelper dbhelper = DBHelper.getDBInstance(getActivity().getApplicationContext());
                     dbhelper.updateUser(eid,updatedname,updatedphno);
+                    //Firebase RTDB update
+                    firebaseUpdate(eid,updatedname,updatedphno);
                     upcb.updateRecyclerView();
-                    dismiss();
                 }
+                dismiss();
             }
         });
 
@@ -56,6 +60,14 @@ public class EditUserDialogFragment extends DialogFragment {
             }
         });
         return mView;
+    }
+
+    private void firebaseUpdate(String eid,String updatedname, String updatedphno) {
+        HashMap<String,Object> hm = new HashMap<>();
+        hm.put("name",updatedname);
+        hm.put("phoneNumber",updatedphno);
+        DAOEmployee daoEmployee = new DAOEmployee();
+        daoEmployee.updateEmployee(eid,hm);
     }
 
     @Override
