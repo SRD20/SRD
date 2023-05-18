@@ -31,7 +31,6 @@ public class AddUsersDialog extends DialogFragment {
         emp_pwd = addUsersDiag.findViewById(R.id.pwd);
         emp_phno = addUsersDiag.findViewById(R.id.phn_no);
         dbHelper = DBHelper.getDBInstance(getActivity().getApplicationContext());
-
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

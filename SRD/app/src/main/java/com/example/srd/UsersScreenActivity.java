@@ -17,10 +17,12 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 public class UsersScreenActivity extends AppCompatActivity {
     LabDataModel lbdata;
+    String login_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users_screen1);
+        login_id = (String) getIntent().getExtras().get("Logged_User");
         LinearLayout lab_btn = findViewById(R.id.us_lab);
         lab_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +77,11 @@ public class UsersScreenActivity extends AppCompatActivity {
     }
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(),result -> {
         //Once lab qr code is available, put all these lines under if block.
+        //result.getContent should contain lab codeword. Need to add this check.
         if(result.getContents()!=null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(UsersScreenActivity.this);
             builder.setTitle("Scan successful");
+            lbdata.setEmpId(login_id);
             lbdata.setLabId(result.getContents());
             builder.setMessage("You're entering data for " + result.getContents());
             builder.setCancelable(false);

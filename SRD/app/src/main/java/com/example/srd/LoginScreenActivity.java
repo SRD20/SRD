@@ -103,7 +103,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                                     if (admin)
                                         openAdminScreen();
                                     else
-                                        openUserScreen();
+                                        openUserScreen(uname);
                                     return;
                                 }
                             }
@@ -147,8 +147,9 @@ public class LoginScreenActivity extends AppCompatActivity {
         });
     }
 
-    private void openUserScreen() {
+    private void openUserScreen(String empid) {
         Intent intent = new Intent(this, UsersScreenActivity.class);
+        intent.putExtra("Logged_User",empid);
         startActivity(intent);
     }
 

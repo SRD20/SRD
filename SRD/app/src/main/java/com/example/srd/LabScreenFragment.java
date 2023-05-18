@@ -3,6 +3,8 @@ package com.example.srd;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -39,8 +44,21 @@ public class LabScreenFragment extends DialogFragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] datetime = getDateTime();
-                Toast.makeText(ctx, "Lab Data saved. "+datetime[0]+" & "+datetime[1] + " "+datetime[2], Toast.LENGTH_SHORT).show();
+                String tmp = temp.getText().toString();
+                String hmd = humidity.getText().toString();
+                if(TextUtils.isEmpty(tmp) || TextUtils.isEmpty(hmd)){
+                    Toast.makeText(ctx, "Please enter both the data", Toast.LENGTH_SHORT).show();
+                }else {
+                    //Log.d("SRD_test","temp & humidity "+tmp+" & "+hmd);
+                    lab_data.setTemp(tmp);
+                    lab_data.setHumidity(hmd);
+                    //0 date, 1 time, 2 AM/PM
+                    String[] datetime = getDateTime();
+                    lab_data.setDate(datetime[0]);
+                    lab_data.setTime(datetime[1]+" "+datetime[2]);
+                    saveData(datetime[0]);
+                    Toast.makeText(ctx, "Lab Data saved. " + datetime[0] + " & " + datetime[1] + " " + datetime[2], Toast.LENGTH_SHORT).show();
+                }
                 dismiss();
             }
         });
@@ -56,6 +74,11 @@ public class LabScreenFragment extends DialogFragment {
         return labScreen;
     }
 
+    private void saveData(String date) {
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("SRD_Table").child("Lab_Data").child(lab_data.getLabId());
+        dbref.child(date).push().setValue(lab_data);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -67,7 +90,7 @@ public class LabScreenFragment extends DialogFragment {
 
     private String[] getDateTime(){
         LocalDateTime currDateTime = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss a");
         return currDateTime.format(myFormatObj).split(" ");
     }
 
