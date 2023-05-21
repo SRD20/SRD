@@ -19,4 +19,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_the_data">View the data</string>
+    <string-array name="lab_names">
+        <item>LAB_01</item>
+        <item>LAB_02</item>
+        <item>LAB_03</item>
+        <item>LAB_04</item>
+        <item>LAB_05</item>
+    </string-array>
 </resources>

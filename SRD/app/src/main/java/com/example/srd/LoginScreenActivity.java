@@ -3,7 +3,10 @@ package com.example.srd;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +32,11 @@ public class LoginScreenActivity extends AppCompatActivity {
     private boolean admin;
     ProgressBar progressBar;
     DatabaseReference dbref;
+    SwitchCompat remember_me;
     TextView type;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    boolean loggedIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +44,24 @@ public class LoginScreenActivity extends AppCompatActivity {
         type = findViewById(R.id.login_textview);
         username = findViewById(R.id.username_editText);
         password = findViewById(R.id.password_editText);
-        String str = (String) getIntent().getExtras().get("USER_TYPE");
+        remember_me = findViewById(R.id.rem_swt);
+        preferences = getSharedPreferences(ConstantsClass.SPF_NAME,MODE_PRIVATE);
+        editor = preferences.edit();
+
+        String str = (String) getIntent().getExtras().get(ConstantsClass.MAIN_ACTIVITY_UTYPE);
         type.setText(str);
-        if("Admin Login".equals(str))
+        if(ConstantsClass.ADMIN_LOGIN.equals(str))
             admin = true;
         else
             admin = false;
+        loggedIn = preferences.getBoolean(ConstantsClass.SPF_SESSION,false);
+        if (loggedIn) {
+            boolean sv_admin = preferences.getBoolean(ConstantsClass.SPF_ADMIN_TYPE,false);
+            if(sv_admin == admin) {
+                username.setText(preferences.getString(ConstantsClass.SPF_USERID, ""));
+                password.setText(preferences.getString(ConstantsClass.SPF_PWD, ""));
+            }
+        }
         progressBar = findViewById(R.id.login_progress);
         login = (Button) findViewById(R.id.login_btn);
         cancel = (Button) findViewById(R.id.login_cancel);
@@ -104,6 +124,14 @@ public class LoginScreenActivity extends AppCompatActivity {
                                         openAdminScreen();
                                     else
                                         openUserScreen(uname);
+                                    //store uname and pwd in spf
+                                    if(!loggedIn && remember_me.isChecked()) {
+                                        editor.putString(ConstantsClass.SPF_USERID, uname);
+                                        editor.putString(ConstantsClass.SPF_PWD, pwd);
+                                        editor.putBoolean(ConstantsClass.SPF_SESSION, true);
+                                        editor.putBoolean(ConstantsClass.SPF_ADMIN_TYPE,admin);
+                                        editor.apply();
+                                    }
                                     return;
                                 }
                             }
@@ -151,6 +179,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UsersScreenActivity.class);
         intent.putExtra("Logged_User",empid);
         startActivity(intent);
+        finish();
     }
 
     private void openAdminScreen() {

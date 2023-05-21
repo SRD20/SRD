@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -18,11 +20,16 @@ import com.journeyapps.barcodescanner.ScanOptions;
 public class UsersScreenActivity extends AppCompatActivity {
     LabDataModel lbdata;
     String login_id;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users_screen1);
         login_id = (String) getIntent().getExtras().get("Logged_User");
+        preferences = getSharedPreferences(ConstantsClass.SPF_NAME,MODE_PRIVATE);
+        editor = preferences.edit();
         LinearLayout lab_btn = findViewById(R.id.us_lab);
         lab_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +78,29 @@ public class UsersScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(UsersScreenActivity.this, "Logout", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(UsersScreenActivity.this)
+                        .setTitle("Confirmation")
+                        .setMessage("Are you sure to logout ?");
+                alertDialog.setCancelable(false);
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        editor.clear();
+                        editor.apply();
+                        dialogInterface.dismiss();
+                        Intent intent = new Intent(UsersScreenActivity.this,MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                });
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alert = alertDialog.create();
+                alert.show();
             }
         });
 

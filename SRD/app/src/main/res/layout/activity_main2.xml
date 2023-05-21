@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_alignParentStart="true"
+        android:background="@drawable/cust_edittext"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -42,6 +43,7 @@
         android:id="@+id/password_editText"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:background="@drawable/cust_edittext"
         android:layout_alignEnd="@+id/username_editText"
         android:layout_alignRight="@+id/username_editText"
         android:layout_alignParentStart="true"
@@ -69,11 +71,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="342dp"
-        android:layout_marginEnd="246dp"
-        android:layout_marginBottom="355dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="396dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="301dp"
         android:text="Attempts Left:"
         android:textSize="25dp" />
 
@@ -86,10 +88,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="47dp"
-        android:layout_marginTop="415dp"
+        android:layout_marginTop="472dp"
         android:layout_marginEnd="265dp"
         android:layout_marginRight="2dp"
-        android:layout_marginBottom="268dp"
+        android:layout_marginBottom="211dp"
         android:text="login" />
 
     <Button
@@ -100,11 +102,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="223dp"
+        android:layout_marginStart="229dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="416dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="267dp"
+        android:layout_marginTop="474dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="209dp"
         android:text="Cancel" />
 
     <ProgressBar
@@ -120,6 +122,20 @@
         android:layout_marginEnd="188dp"
         android:layout_marginBottom="451dp"
         android:visibility="gone"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rem_swt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="324dp"
+        android:layout_marginEnd="240dp"
+        android:layout_marginBottom="380dp"
+        android:text="Remember me "/>
 
 
 </RelativeLayout>

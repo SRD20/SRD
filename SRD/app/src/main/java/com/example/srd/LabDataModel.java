@@ -1,7 +1,15 @@
 package com.example.srd;
 
 public class LabDataModel {
-    String labId,empId,time,date,temp,humidity;
+    String labId,empId,time,date,temp,humidity,name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getTime() {
         return time;
@@ -19,9 +27,10 @@ public class LabDataModel {
         this.date = date;
     }
 
-    public LabDataModel(String labId, String empId, String time, String date, String temp, String humidity) {
+    public LabDataModel(String labId, String empId, String name,String time, String date, String temp, String humidity) {
         this.labId = labId;
         this.empId = empId;
+        this.name = name;
         this.time = time;
         this.date = date;
         this.temp = temp;

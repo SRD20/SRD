@@ -2,6 +2,7 @@ package com.example.srd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,7 @@ public class AdminScreen extends AppCompatActivity {
     private Button view_data;
     private Button view_users;
     private Button view_compln;
-    private EditText emp_id,username,passwd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class AdminScreen extends AppCompatActivity {
         view_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showViewDataActivity();
             }
         });
 
@@ -50,6 +51,11 @@ public class AdminScreen extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void showViewDataActivity() {
+        Intent intent=new Intent(this, ViewDataActivity.class);
+        startActivity(intent);
     }
 
     private void showViewUsersDialog() {
