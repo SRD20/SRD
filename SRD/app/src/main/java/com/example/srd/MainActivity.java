@@ -48,6 +48,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(this, LoginScreenActivity.class);
         intent.putExtra(ConstantsClass.MAIN_ACTIVITY_UTYPE,utype);
         startActivity(intent);
-        finish();
+        //finish();
     }
 }

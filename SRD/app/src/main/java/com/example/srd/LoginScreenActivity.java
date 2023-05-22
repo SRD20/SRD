@@ -40,7 +40,8 @@ public class LoginScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        //setContentView(R.layout.activity_main2);
+        setContentView(R.layout.login_sc2);
         type = findViewById(R.id.login_textview);
         username = findViewById(R.id.username_editText);
         password = findViewById(R.id.password_editText);
@@ -64,7 +65,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         }
         progressBar = findViewById(R.id.login_progress);
         login = (Button) findViewById(R.id.login_btn);
-        cancel = (Button) findViewById(R.id.login_cancel);
+        //cancel = (Button) findViewById(R.id.login_cancel);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
