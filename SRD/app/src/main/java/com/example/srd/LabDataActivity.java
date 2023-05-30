@@ -97,7 +97,7 @@ public class LabDataActivity extends AppCompatActivity {
                 Log.d("SRD_test","in button : lab & date for lab data : "+lab_picked+" & "+date_picked );
                 FirebaseRecyclerOptions<LabDataModel> options =
                         new FirebaseRecyclerOptions.Builder<LabDataModel>()
-                                .setQuery(FirebaseDatabase.getInstance().getReference("SRD_Table").child("Lab_Data").child(lab_picked).child(date_picked), LabDataModel.class)
+                                .setQuery(FirebaseDatabase.getInstance().getReference(ConstantsClass.CONST_ROOT).child(ConstantsClass.CONST_LAB_NODE).child(lab_picked).child(date_picked), LabDataModel.class)
                                 .build();
                 lab_adapter = new LabDataAdapter(options,callback);
                 lab_adapter.startListening();

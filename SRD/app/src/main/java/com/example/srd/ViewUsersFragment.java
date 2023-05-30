@@ -37,7 +37,7 @@ public class ViewUsersFragment extends DialogFragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         rv.setLayoutManager(linearLayoutManager);
         ViewUsersAdapter viewUsersAdapter = new ViewUsersAdapter(getActivity(),getActivity().getSupportFragmentManager(),list);
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("SRD_Table").child("login").child("Normal");
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference(ConstantsClass.CONST_ROOT).child(ConstantsClass.CONST_LOGIN_NODE).child(ConstantsClass.CONST_LOGIN_USER);
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

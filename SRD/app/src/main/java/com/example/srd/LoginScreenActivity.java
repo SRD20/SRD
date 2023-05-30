@@ -26,8 +26,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginScreenActivity extends AppCompatActivity {
-    private Button login;
-    private Button cancel;
+
     private EditText username, password;
     private boolean admin;
     ProgressBar progressBar;
@@ -64,8 +63,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             }
         }
         progressBar = findViewById(R.id.login_progress);
-        login = (Button) findViewById(R.id.login_btn);
-        //cancel = (Button) findViewById(R.id.login_cancel);
+        Button login = (Button) findViewById(R.id.login_btn);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +75,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                     Toast.makeText(LoginScreenActivity.this, "Please enter complete credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                dbref = FirebaseDatabase.getInstance().getReference("SRD_Table").child("login").child(admin?"Admin":"Normal").child(uname);
+                dbref = FirebaseDatabase.getInstance().getReference(ConstantsClass.CONST_ROOT).child(ConstantsClass.CONST_LOGIN_NODE).child(admin?ConstantsClass.CONST_LOGIN_ADMIN:ConstantsClass.CONST_LOGIN_USER).child(uname);
                 progressBar.setVisibility(View.VISIBLE);
                 /*dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -109,7 +107,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                     }
                 });*/
 
-                Query query = FirebaseDatabase.getInstance().getReference("SRD_Table").child("login").child(admin?"Admin":"Normal").orderByChild("empId").equalTo(uname);
+                Query query = FirebaseDatabase.getInstance().getReference(ConstantsClass.CONST_ROOT).child(ConstantsClass.CONST_LOGIN_NODE).child(admin?ConstantsClass.CONST_LOGIN_ADMIN:ConstantsClass.CONST_LOGIN_USER).orderByChild("empId").equalTo(uname);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -121,11 +119,7 @@ public class LoginScreenActivity extends AppCompatActivity {
                                     Log.d("SRD_Firebase", "Password from db :" + pwrd);
                                     Toast.makeText(LoginScreenActivity.this, "Authentication successfully done", Toast.LENGTH_SHORT).show();
                                     progressBar.setVisibility(View.GONE);
-                                    if (admin)
-                                        openAdminScreen();
-                                    else
-                                        openUserScreen(uname);
-                                    //store uname and pwd in spf
+
                                     if(!loggedIn && remember_me.isChecked()) {
                                         editor.putString(ConstantsClass.SPF_USERID, uname);
                                         editor.putString(ConstantsClass.SPF_PWD, pwd);
@@ -133,6 +127,14 @@ public class LoginScreenActivity extends AppCompatActivity {
                                         editor.putBoolean(ConstantsClass.SPF_ADMIN_TYPE,admin);
                                         editor.apply();
                                     }
+                                    editor.putString(ConstantsClass.CURR_USER,uname);
+                                    editor.putString(ConstantsClass.CURR_USER_PWD,pwd);
+                                    editor.apply();
+                                    if (admin)
+                                        openAdminScreen();
+                                    else
+                                        openUserScreen(uname);
+
                                     return;
                                 }
                             }

@@ -10,19 +10,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AdminScreen extends AppCompatActivity {
-    private Button add_users;
-    private Button view_data;
-    private Button view_users;
-    private Button view_compln;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        add_users = (Button) findViewById(R.id.add_user_btn);
-        view_users = (Button) findViewById(R.id.view_users_btn);
-        view_compln = (Button) findViewById(R.id.view_comp_btn);
-        view_data = (Button) findViewById(R.id.view_data_btn);
+        Button add_users = (Button) findViewById(R.id.add_user_btn);
+        Button view_users = (Button) findViewById(R.id.view_users_btn);
+        Button view_compln = (Button) findViewById(R.id.view_comp_btn);
+        Button view_data = (Button) findViewById(R.id.view_data_btn);
 
         add_users.setOnClickListener(new View.OnClickListener() {
             @Override
