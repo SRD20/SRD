@@ -13,15 +13,15 @@ import android.widget.Toast;
 
 public class ViewDataActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    //SharedPreferences preferences;
+    //SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_data);
-        preferences = getSharedPreferences(ConstantsClass.SPF_NAME,MODE_PRIVATE);
-        editor = preferences.edit();
+        //preferences = getSharedPreferences(ConstantsClass.SPF_NAME,MODE_PRIVATE);
+        //editor = preferences.edit();
         LinearLayout lab_btn = findViewById(R.id.as_lab);
         lab_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,16 +61,16 @@ public class ViewDataActivity extends AppCompatActivity {
                 Toast.makeText(ViewDataActivity.this, "Fuel-Readings", Toast.LENGTH_SHORT).show();
             }
         });
-        LinearLayout chg_pwd_btn = findViewById(R.id.as_chg_pwd);
-        chg_pwd_btn.setOnClickListener(new View.OnClickListener() {
+        //LinearLayout chg_pwd_btn = findViewById(R.id.as_chg_pwd);
+        /*chg_pwd_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ViewDataActivity.this, "Change password", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
-        LinearLayout logout_btn = findViewById(R.id.as_logout);
-        logout_btn.setOnClickListener(new View.OnClickListener() {
+        //LinearLayout logout_btn = findViewById(R.id.as_logout);
+        /*logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ViewDataActivity.this, "Logout", Toast.LENGTH_SHORT).show();
@@ -98,7 +98,7 @@ public class ViewDataActivity extends AppCompatActivity {
                 AlertDialog alert = alertDialog.create();
                 alert.show();
             }
-        });
+        });*/
 
     }
 

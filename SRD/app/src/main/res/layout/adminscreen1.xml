@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#db121f"
+    android:background="#ee1e05"
     >
     <ScrollView
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:id="@+id/as_lab"
+                        android:id="@+id/add_user_btn"
                         android:layout_margin="2dp"
                         android:padding="10dp"
                         android:clickable="true"
@@ -69,14 +69,14 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/lab_img"
+                            android:src="@drawable/add_user"
                             android:duplicateParentState="true"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Lab Readings"
+                            android:text="Add Users"
                             android:textSize="15sp"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:id="@+id/as_dg"
+                        android:id="@+id/view_users_btn"
                         android:layout_margin="2dp"
                         android:padding="10dp"
                         android:clickable="true"
@@ -107,14 +107,14 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/dg_img"
+                            android:src="@drawable/view_users"
                             android:duplicateParentState="true"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="DG readings"
+                            android:text="View Users"
                             android:textSize="15sp"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
@@ -136,7 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:id="@+id/as_eb"
+                        android:id="@+id/view_data_btn"
                         android:layout_margin="2dp"
                         android:padding="10dp"
                         android:clickable="true"
@@ -147,14 +147,14 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/eb_icon"
+                            android:src="@drawable/view_data"
                             android:duplicateParentState="true"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="EB Readings"
+                            android:text="View Data"
                             android:textSize="15sp"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
@@ -176,7 +176,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:id="@+id/as_water"
+                        android:id="@+id/view_comp_btn"
                         android:layout_margin="2dp"
                         android:padding="10dp"
                         android:clickable="true"
@@ -187,14 +187,14 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/water_level"
+                            android:src="@drawable/view_complaints"
                             android:duplicateParentState="true"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Water Readings"
+                            android:text="View Complaints"
                             android:textSize="15sp"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
@@ -204,8 +204,9 @@
 
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/support"
+                    android:id="@+id/setting"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="10dp"
@@ -217,34 +218,71 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:id="@+id/as_fuel"
                         android:layout_margin="2dp"
                         android:padding="10dp"
                         android:clickable="true"
                         android:focusable="true"
+                        android:id="@+id/as_chg_pwd"
                         >
 
                         <ImageView
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:src="@drawable/dg_img"
+                            android:src="@drawable/pwd_chng"
                             android:duplicateParentState="true"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="DG Fuel Readings"
+                            android:text="Change Password"
                             android:textSize="15sp"
                             android:layout_gravity="center_horizontal"
                             android:textStyle="bold"
                             android:duplicateParentState="true"
                             />
                     </LinearLayout>
-
                 </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/logout"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    app:cardElevation="7dp"
+                    app:cardCornerRadius="10dp"
+                    >
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="2dp"
+                        android:padding="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/as_logout"
+                        >
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:src="@drawable/logout_img"
+                            android:duplicateParentState="true"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Logout"
+                            android:textSize="15sp"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:duplicateParentState="true"
+                            />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
 
             </GridLayout>
